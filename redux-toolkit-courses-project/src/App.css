@@ -1,0 +1,23 @@
+.navbar{
+  display: flex;
+  justify-content: space-around;
+  background-color: #895A3C;
+}
+.navDiv{
+  position: relative;
+}
+.itemIcon{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 20px;
+
+}
+.count{
+  font-size: small;
+  background-color: #242424;
+  color: white;
+  width: 20px;
+  text-align: center;
+  border-radius: 50%;
+}
