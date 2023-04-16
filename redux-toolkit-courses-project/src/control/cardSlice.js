@@ -3,7 +3,7 @@ import courseItems from "../courseItems";
 
 const initialState = {
   cardItems: courseItems,
-  quantity: 2,
+  quantity: 5,
   total: 0,
 };
 
@@ -22,17 +22,32 @@ const cardSlice = createSlice({
     increaseItem: (state, action) => {
       const itemId = action.payload;
       const cardItem = state.cardItems.find((item) => item.id === itemId);
-      cardItem.quantity += 1
+      cardItem.quantity += 1;
     },
     decreaseItem: (state, action) => {
       const itemId = action.payload;
       const cardItem = state.cardItems.find((item) => item.id === itemId);
       cardItem.quantity -= 1;
     },
+    calculateTotal: (state) => {
+      let total = 0;
+      let quantity = 0;
+      state.cardItems.forEach((item) => {
+        total += item.quantity * item.price;
+        quantity += item.quantity;
+      });
+      state.quantity = quantity;
+      state.total = total;
+    },
   },
 });
 
-export const { clearCard, removeItem, increaseItem, decreaseItem } =
-  cardSlice.actions;
+export const {
+  clearCard,
+  removeItem,
+  increaseItem,
+  decreaseItem,
+  calculateTotal,
+} = cardSlice.actions;
 
 export default cardSlice.reducer;
